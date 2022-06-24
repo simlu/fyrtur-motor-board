@@ -227,6 +227,7 @@ void motor_set_default_settings() {
 #ifndef SLIM_BINARY
 void motor_load_settings() {
 	uint16_t tmp;
+#ifdef READ_DEFAULT_FULL_CURTAIN_LEN_FROM_EEPROM
 	if (EE_ReadVariable(VirtAddVarTab[FULL_CURTAIN_LEN_EEPROM], &tmp) != 0) {
 		tmp = full_curtain_length = DEFAULT_FULL_CURTAIN_LEN;
 		EE_WriteVariable(VirtAddVarTab[FULL_CURTAIN_LEN_EEPROM], tmp);
@@ -247,6 +248,10 @@ void motor_load_settings() {
 			max_curtain_length = DEFAULT_FULL_CURTAIN_LEN;
 		}
 	}
+#else
+	full_curtain_length = DEFAULT_FULL_CURTAIN_LEN;
+	max_curtain_length = DEFAULT_FULL_CURTAIN_LEN;
+#endif
 #ifdef READ_DEFAULT_MINIMUM_VOLTAGE_FROM_EEPROM
 	if (EE_ReadVariable(VirtAddVarTab[MINIMUM_VOLTAGE_EEPROM], &tmp) != 0) {
 		tmp = minimum_voltage = DEFAULT_MINIMUM_VOLTAGE;

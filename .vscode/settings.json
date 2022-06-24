@@ -1,6 +1,7 @@
 {
-    "stm32-for-vscode.openOCDPath": "openocd",
-    "stm32-for-vscode.makePath": "make",
-    "stm32-for-vscode.armToolchainPath": "",
-    "cortex-debug.armToolchainPath": ""
+    "stm32-for-vscode.openOCDPath": "/home/vinc/Programs/xpack-openocd-0.11.0-4/bin/openocd",
+    "stm32-for-vscode.makePath": "/usr/bin/make",
+    "stm32-for-vscode.armToolchainPath": "/home/vinc/Programs/gcc-arm-none-eabi-10.3-2021.10/bin/",
+    "cortex-debug.armToolchainPath": "/home/vinc/Programs/gcc-arm-none-eabi-10.3-2021.10/bin/",
+    "cortex-debug.openocdPath": "/home/vinc/Programs/xpack-openocd-0.11.0-4/bin/openocd"
 }

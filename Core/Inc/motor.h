@@ -27,14 +27,16 @@
 #define REVERSE_ORIENTATION	1	// Curtain is installed in reverse configuration (curtain rod is flipped to "front roll" configuration)
 
 // If != 0,  motor will be stopped if voltage drops below minimum voltage (in order to protect battery)
-#define DEFAULT_MINIMUM_VOLTAGE (int)(6.7*(1<<MINIMUM_VOLTAGE_DECIMAL_BITS))
-//#define DEFAULT_MINIMUM_VOLTAGE 0	// voltage check is bypassed
-#define READ_DEFAULT_MINIMUM_VOLTAGE_FROM_EEPROM  // Reads default from EEPROM if it's stored there. Otherwise use the value above
+// #define DEFAULT_MINIMUM_VOLTAGE (int)(6.7*(1<<MINIMUM_VOLTAGE_DECIMAL_BITS))
+#define DEFAULT_MINIMUM_VOLTAGE 0	// voltage check is bypassed
+// #define READ_DEFAULT_MINIMUM_VOLTAGE_FROM_EEPROM  // Reads default from EEPROM if it's stored there. Otherwise use the value above
 
-#define DEFAULT_FULL_CURTAIN_LEN GEAR_RATIO * (13 + 265.0/360) * 4
+#define DEFAULT_FULL_CURTAIN_LEN GEAR_RATIO * 15.5 * 4
+// #define READ_DEFAULT_FULL_CURTAIN_LEN_FROM_EEPROM  // Reads default from EEPROM if it's stored there. Otherwise use the value above
 
-#define DEFAULT_TARGET_SPEED 18 // RPM
-#define READ_DEFAULT_SPEED_FROM_EEPROM  // Reads default speed from EEPROM if it's stored there. Otherwise use the value above
+
+#define DEFAULT_TARGET_SPEED 5 // RPM
+// #define READ_DEFAULT_SPEED_FROM_EEPROM  // Reads default speed from EEPROM if it's stored there. Otherwise use the value above
 
 #define DEFAULT_AUTO_CAL_SETTING 1	// auto-calibration is enabled by default
 
