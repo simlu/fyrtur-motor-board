@@ -67,7 +67,7 @@ uint16_t uart_rx_buffer_len = 0;
 // UART TX buffers
 uint8_t uart_dma_tx_buffer[UART_DMA_BUF_SIZE]; // circular DMA tx buffer
 uint8_t uart_dma_tx_size = 0;  // the chunk size which is being transferred currently
-uint16_t uart_dma_tx_buffer_len = 0;  // bytes in the circular buffer 
+uint16_t uart_dma_tx_buffer_len = 0;  // bytes in the circular buffer
 uint16_t uart_dma_tx_buffer_high_ptr = 0; // pointer for writing new data
 uint16_t uart_dma_tx_buffer_low_ptr = 0; // pointer for reading data to DMA
 uint8_t uart_tx_buffer[16]; // contains newly assembled packet to be transferred to DMA buffer
@@ -79,8 +79,8 @@ uint16_t adc_buf[ADC_BUF_LEN];
 uint16_t motor_current;
 uint16_t voltage;
 
-/* 
- * Used to track when motor is idle and no commands have been issued. 
+/*
+ * Used to track when motor is idle and no commands have been issued.
  * After IDLE_MODE_SLEEP_DELAY milliseconds sleep mode is entered.
  * If set to 0 then sleep mode is disabled temporarily (e.g. during movement and calibration)
  */
@@ -206,7 +206,7 @@ void uart_send_msg(uint8_t * data, int tx_bytes) {
     blink += 5;
     return;
   }
-  // transfer the packet to circular tx buffer  
+  // transfer the packet to circular tx buffer
   for (int i=0;i<tx_bytes;i++) {
     uart_dma_tx_buffer[ uart_dma_tx_buffer_high_ptr++ ] = data[i];
     if (uart_dma_tx_buffer_high_ptr >= UART_DMA_BUF_SIZE) {
@@ -221,7 +221,7 @@ void uart_send_msg(uint8_t * data, int tx_bytes) {
 }
 
 void send_error_msg() {
-    // Send ERROR MSG: Send back the number of bytes received and 
+    // Send ERROR MSG: Send back the number of bytes received and
     // 1) first four received bytes if we received less bytes than anticipated (6 bytes)
     // 2) the 2 command bytes and checksum (because we received 6 bytes but there was checksum mismatch)
     uart_tx_buffer[0] = 0xde;
@@ -400,7 +400,7 @@ uint8_t sleep_timer_timeout() {
   if (idle_mode_sleep_delay > 0) {
     if (idle_timestamp == 0)
       return 0;
-    if (HAL_GetTick() - idle_timestamp > idle_mode_sleep_delay) 
+    if (HAL_GetTick() - idle_timestamp > idle_mode_sleep_delay)
       return 1;
   }
   return 0;
@@ -408,8 +408,8 @@ uint8_t sleep_timer_timeout() {
 
 /*
  * Original FW: Sleep mode current consumption 0.350 mA @ 7V (ST-Link connected)
- * 
- * This FW: 
+ *
+ * This FW:
  *  run (normal mode): 13 mA
  *  sleep mode: 1.7 mA (not used currently)
  *  stop mode: 0.337 mA (ST-Link connected)
@@ -461,7 +461,7 @@ void enter_sleep_mode() {
 
   // Restart SysTick
   HAL_ResumeTick();
- 
+
   MX_USART1_UART_Init();
 
   uart_start_rx_DMA();
@@ -539,17 +539,7 @@ int main(void)
   /* Unlock the Flash Program Erase controller */
   HAL_FLASH_Unlock();
 
-#ifndef SLIM_BINARY
-  /* EEPROM Init */
-  if (EE_Init() != HAL_OK) {
-	  // Initing FLASH failed! This should not happen! We will try to continue anyway by setting default values
-	  motor_set_default_settings();
-  } else {
-	  motor_load_settings();
-  }
-#else
   motor_set_default_settings();
-#endif
 
   /* USER CODE END 2 */
 
