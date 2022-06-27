@@ -38,12 +38,12 @@
 #define DEFAULT_TARGET_SPEED 5 // RPM
 // #define READ_DEFAULT_SPEED_FROM_EEPROM  // Reads default speed from EEPROM if it's stored there. Otherwise use the value above
 
-#define DEFAULT_AUTO_CAL_SETTING 1	// auto-calibration is enabled by default
+#define DEFAULT_AUTO_CAL_SETTING 0	// auto-calibration is enabled by default
 
 #define DEFAULT_ORIENTATION NORMAL_ORIENTATION
 
-/* 
-The DEFAULT_MAX_MOTOR_CURRENT is the maximum amount of current that motor can draw while moving. Used for stall detection 
+/*
+The DEFAULT_MAX_MOTOR_CURRENT is the maximum amount of current that motor can draw while moving. Used for stall detection
 at the top position. Note that this is upper limit is not enforced when starting the movement in order to break the static friction!
 */
 #define DEFAULT_MAX_MOTOR_CURRENT 2048 // in mA.  0 == DISABLED
@@ -65,15 +65,15 @@ at the top position. Note that this is upper limit is not enforced when starting
  */
 #define ENDPOINT_CALIBRATION_PERIOD 400 // Milliseconds
 
-/* 
+/*
  * The minimum motor current (high enough resistance) which is needed to signal that the motor has indeed stalled
- * at the upmost position. If motor has stalled with a current below this value, it would suggest that during low speed 
+ * at the upmost position. If motor has stalled with a current below this value, it would suggest that during low speed
  * (usually RPM < 5) movement there was sudden increase in friction which caused the motor to stall. The lower voltages
- * used for low speeds most likely make the motor more susceptible to stall. 
- * 
- * Usually the RPM adjustment function would increase the PWM duty cycle but sometimes it doesn't respond quickly enough 
+ * used for low speeds most likely make the motor more susceptible to stall.
+ *
+ * Usually the RPM adjustment function would increase the PWM duty cycle but sometimes it doesn't respond quickly enough
  * before Hall sensor timeout kicks in.
- * 
+ *
  * If this happens, you can try using a higher speeds or try to make sure there isn't any extra friction in the system
  * (such as those protruding metal tabs in the motor housing when it was disassembled and reassembled). In any case,
  * it seems that 3-4 RPM is the minimum speed which the Fyrtur can sustaing without stalling but your mileage may wary.
@@ -97,9 +97,9 @@ at the top position. Note that this is upper limit is not enforced when starting
 #define DANCE_STEP_SPEED 25
 
 /*
- * Flexi-speed is a mechanism to change the motor speed setting even when using the custom firmware 
+ * Flexi-speed is a mechanism to change the motor speed setting even when using the custom firmware
  * with original Ikea Fyrtur Zigbee module. There are 4 different speed settings (3, 5, 15 and 25 RPM). User can
- * cycle between them by repeatedly rolling the blinds up (CMD_UP command) 3 times. Firmware then selects the next speed 
+ * cycle between them by repeatedly rolling the blinds up (CMD_UP command) 3 times. Firmware then selects the next speed
  * in the preset list and will signal the user by doing a little "down/up dance" curtain movement.
  */
 #define FLEXISPEED_ENABLED
