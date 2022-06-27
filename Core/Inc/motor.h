@@ -38,7 +38,7 @@
 #define DEFAULT_TARGET_SPEED 5 // RPM
 // #define READ_DEFAULT_SPEED_FROM_EEPROM  // Reads default speed from EEPROM if it's stored there. Otherwise use the value above
 
-#define DEFAULT_AUTO_CAL_SETTING 0	// auto-calibration is enabled by default
+#define DEFAULT_AUTO_CAL_SETTING 1	// auto-calibration is enabled by default
 
 #define DEFAULT_ORIENTATION NORMAL_ORIENTATION
 
